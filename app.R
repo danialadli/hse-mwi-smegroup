@@ -1949,7 +1949,37 @@ server <- function(input, output, session) {
   })
   
   # plot map based on fill
+  #security reenginerring - Ariff (add validation and sanitization in app interface)
+  # output$us_map <- renderLeaflet({
+  #   withProgress(message = "Rendering map", {
+  #     us_proxy <- plot_map(st_sub$us_map_fill, st_sub$geodat,
+  #                          st_sub$idx, ol, is_all = st_sub$is_all)
+      
+  #     if (focus_info$hl){
+  #       # add a highlighted polygon
+  #       us_proxy <- plot_map(st_sub$us_map_fill, st_sub$geodat, 
+  #                            st_sub$idx, ol, 
+  #                            is_all = st_sub$is_all,
+  #                            add_poly = T, us_proxy = us_proxy, 
+  #                            zcta_choose = focus_info$ZCTA)
+  #     }
+      
+  #     us_proxy
+  #   })
+  # })
+
+  #new block
+   # plot map based on fill
   output$us_map <- renderLeaflet({
+    
+    # --- ASSIGNMENT 1 REENGINEERING: SECURITY (Input Validation) ---
+    # Task: Add validation to prevent system crash if inputs are missing/malformed
+    validate(
+      need(input$st_focus, "Error: State selection is missing. System halted to prevent crash."),
+      need(input$us_map_fill, "Error: Measure selection is required for safe processing.")
+    )
+    # -----------------------------------------------------------------
+
     withProgress(message = "Rendering map", {
       us_proxy <- plot_map(st_sub$us_map_fill, st_sub$geodat,
                            st_sub$idx, ol, is_all = st_sub$is_all)
