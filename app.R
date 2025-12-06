@@ -755,6 +755,7 @@ ui <- fluidPage(
       sidebarLayout(
         sidebarPanel(
           width = 3,
+          style = "overflow-y: auto; max-height: 90vh;",
           bsCollapse(
             multiple = T,
             open = c("Exploration Options", "About Selected Measure", "About the Mental Wellness Index"),
@@ -812,7 +813,7 @@ ui <- fluidPage(
             bsCollapsePanel(
               "About the Mental Wellness Index",
               HTML("<center>"),
-              img(src = file.path("media", "MWI Framework (Transparent Background).png"), align = "center", width = "90%"),
+              img(src = file.path("media", "MWI Framework (Transparent Background).png"), align = "center", style = "max-width: 100%; height: auto; width: 90%;"),
               HTML("</center>"),
               HTML("<font size = '2'>"),
               HTML(paste0("The Mental Wellness Index is the weighted sum of 28 measure values, which quantify facilitators and barriers to mental wellness. For more information about the Mental Wellness Index, please see the 'MWI Toolkit' page.<p></p>"
@@ -830,18 +831,19 @@ ui <- fluidPage(
           width = 9,
           tags$head(tags$script(src = "msg_api.js")),
           tags$head(tags$script(src = "web_content.js")),
+          fluidRow(
           column(
             width = 8,
             uiOutput("us_map_legend"),
             HTML("<br>"),
-            withSpinner(leafletOutput("us_map", height = 850),
+            withSpinner(leafletOutput("us_map", height = "85vh"),
                         type = 8, color = "#005B94", hide.ui = F)
           ),
           column(
             width = 4,
             # hr(),
             uiOutput("us_distr_title"),
-            withSpinner(plotlyOutput("us_distr", height = 400),
+            withSpinner(plotlyOutput("us_distr", height = "40vh"),
                         type = 8, color = "#005B94", hide.ui = F),
             # hr(),
             bsCollapse(
@@ -884,6 +886,7 @@ ui <- fluidPage(
       sidebarLayout(
         sidebarPanel(
           width = 3,
+          style = "overflow-y: auto; max-height: 90vh;",
           bsCollapse(
             multiple = T,
             open = c("Exploration Options", "About Selected Measure", "About the Mental Wellness Index"),
@@ -933,7 +936,7 @@ ui <- fluidPage(
             bsCollapsePanel(
               "About the Mental Wellness Index",
               HTML("<center>"),
-              img(src = file.path("media", "MWI Framework (Transparent Background).png"), align = "center", width = "90%"),
+              img(src = file.path("media", "MWI Framework (Transparent Background).png"), align = "center", style = "max-width: 100%; height: auto; width: 90%;"),
               HTML("</center>"),
               HTML("<font size = '2'>"),
               HTML(paste0("The Mental Wellness Index is the weighted sum of 28 measure values, which quantify facilitators and barriers to mental wellness. For more information about the Mental Wellness Index, please see the 'MWI Toolkit' page.<p></p>"
@@ -953,11 +956,12 @@ ui <- fluidPage(
             tabPanel(
               "Explore ZCTA Maps",
               p(),
+              fluidRow(
               column(
                 width = 8,
                 uiOutput("com_map_legend"),
                 HTML("<br>"),
-                withSpinner(leafletOutput("com_map", height = 850),
+                withSpinner(leafletOutput("com_map", height = "85vh"),
                             type = 8, color = "#005B94", hide.ui = F)
               ),
               column(
@@ -1048,7 +1052,7 @@ ui <- fluidPage(
                   "Enter ZIP Codes or ZCTAs to subset the MWI to (line separated):",
                   placeholder = "12345\n10034\n19567\n...",
                   height = "200px",
-                  width = "400px"
+                  width = "100%"
                 ),
                 switchInput(
                   "custom_mwi_zip_choice",
@@ -1066,16 +1070,15 @@ ui <- fluidPage(
             HTML("<br><br>"),
             verbatimTextOutput("custom_error_weights"),
             HTML("</center>")
-          ),
-          column(width = 2)
+          )
         )
       ),
       tabPanel(
         title = div("Add Local Data to MWI", class = "explore"),
         fluidRow(
-          column(width = 2),
+          column(width = 12, class = "col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2"),
           column(
-            width = 8,
+            width = 12, class = "col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2",
             HTML("<center><h2>Add Local Data to Mental Wellness Index (MWI)</h2></center>"),
             HTML(paste0(
               "<p align = 'justify'>",
@@ -1129,16 +1132,15 @@ ui <- fluidPage(
               verbatimTextOutput("custom_error"),
               HTML("</center>")
             )
-          ),
-          column(width = 2)
+          )
         )
       ),
       tabPanel(
         title = div("Add Local Data to MWI on Your Computer", class = "explore"),
         fluidRow(
-          column(width = 2),
+          column(width = 12, class = "col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2"),
           column(
-            width = 8,
+            width = 12, class = "col-sm-10 col-sm-offset-1 col-md-8 col-md-offset-2",
             HTML("<center><h2>Add Local Data to Mental Wellness Index (MWI) On Your Computer</h2></center>"),
             HTML(paste0(
               "<p align = 'justify'>",
@@ -1214,8 +1216,7 @@ ui <- fluidPage(
               verbatimTextOutput("custom_error_comp"),
               HTML("</center>")
             )
-          ),
-          column(width = 2)
+          )
         )
       )
     ),
@@ -1323,15 +1324,14 @@ server <- function(input, output, session) {
       HTML("<b><center>Welcome to the Mental Wellness Index™!</b></center>"),
     size = "l",
     fluidRow(
-      column(width = 1),
-      column(width = 10,
+      column(width = 12, class = "col-sm-10 col-sm-offset-1",
              HTML("<p align = 'center'><font size = '3'>"),
              HTML(
                "The <b>Mental Wellness Index (MWI)</b> combines 28 factors that influence <b>community-level mental wellness</b> into a single value for <b>each ZIP code</b> in the nation."
              ),
              HTML("</p></font>"),
              HTML("<center>"),
-             img(src = file.path("media", "MWI Framework (Transparent Background).png"), align = "center", width = "60%"),
+             img(src = file.path("media", "MWI Framework (Transparent Background).png"), align = "center", style = "max-width: 100%; height: auto; width: 60%;"),
              HTML("</center>"),
              HTML("<br>"),
              HTML("<center>"),
