@@ -6,7 +6,7 @@
 ## Overview
 This directory contains the architectural artifacts recovered from the `hse-mwi` legacy system. The system originally did not have any documentation on the high-level architecture, thus this new directory brings the documentation of the system architecture using the **C4 Model**.
 
-For a detailed decision log regarding the architecture, please refer to [ADR-001: Current Architecture](./ADR-001-current-architecture.md).
+For a detailed decision log regarding the architecture, please refer to [ADR-001: Current Architecture](./ADR-001.md).
 
 ---
 
