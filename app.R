@@ -734,7 +734,7 @@ ui <- fluidPage(
         div(
           a(
             href="https://www.mitre.org/",
-            img(src="media/MITRE_logo.png", height="30", alt="Logo Mitre Corporation"),
+            img(src="media/MITRE_logo.png", height="30", alt="Mitre Corporation Logo"),
             target="blank",
           ),
           HTML(paste0("Mental Wellness Index™ Tool"))
@@ -812,7 +812,7 @@ ui <- fluidPage(
             bsCollapsePanel(
               "About the Mental Wellness Index",
               HTML("<center>"),
-              img(src = file.path("media", "MWI Framework (Transparent Background).png"), align = "center", width = "90%", alt = "Diagram Framework Mental Wellness Index yang menunjukkan faktor-faktor kesehatan mental"),
+              img(src = file.path("media", "MWI Framework (Transparent Background).png"), align = "center", width = "90%", alt = "Mental Wellness Index Framework Diagram"),
               HTML("</center>"),
               HTML("<font size = '2'>"),
               HTML(paste0("The Mental Wellness Index is the weighted sum of 28 measure values, which quantify facilitators and barriers to mental wellness. For more information about the Mental Wellness Index, please see the 'MWI Toolkit' page.<p></p>"
@@ -933,7 +933,7 @@ ui <- fluidPage(
             bsCollapsePanel(
               "About the Mental Wellness Index",
               HTML("<center>"),
-              img(src = file.path("media", "MWI Framework (Transparent Background).png"), align = "center", width = "90%", alt = "Diagram Framework Mental Wellness Index yang menunjukkan faktor-faktor kesehatan mental"),
+              img(src = file.path("media", "MWI Framework (Transparent Background).png"), align = "center", width = "90%", alt = "Mental Wellness Index Framework Diagram"),
               HTML("</center>"),
               HTML("<font size = '2'>"),
               HTML(paste0("The Mental Wellness Index is the weighted sum of 28 measure values, which quantify facilitators and barriers to mental wellness. For more information about the Mental Wellness Index, please see the 'MWI Toolkit' page.<p></p>"
@@ -1331,7 +1331,7 @@ server <- function(input, output, session) {
              ),
              HTML("</p></font>"),
              HTML("<center>"),
-             img(src = file.path("media", "MWI Framework (Transparent Background).png"), align = "center", width = "60%", alt = "Diagram Framework Mental Wellness Index yang menunjukkan faktor-faktor kesehatan mental"),
+             img(src = file.path("media", "MWI Framework (Transparent Background).png"), align = "center", width = "60%", alt = "Mental Wellness Index Framework Diagram"),
              HTML("</center>"),
              HTML("<br>"),
              HTML("<center>"),
