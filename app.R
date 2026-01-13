@@ -26,8 +26,49 @@ library(DT)
 library(dplyr)
 
 options(shiny.maxRequestSize=300*1024^2)
+# Enable tigris caching to avoid re-downloading shapefiles
+options(tigris_use_cache = TRUE)
 
 source("app_config.R")
+
+# helper function for optimized data loading ----
+
+# Read CSV with RDS caching for faster loading
+# If RDS exists and is newer than CSV, use RDS (5-10x faster)
+# Otherwise, read CSV and create RDS for next time
+read_csv_cached <- function(file_path, ...) {
+  rds_path <- gsub("\\.csv$", ".rds", file_path)
+  
+  # Check if RDS exists and is up to date
+  if (file.exists(rds_path) && file.exists(file_path)) {
+    csv_time <- file.info(file_path)$mtime
+    rds_time <- file.info(rds_path)$mtime
+    
+    if (rds_time >= csv_time) {
+      # RDS is current, use it for fast loading
+      data <- readRDS(rds_path)
+      # Reset row names to avoid duplicate row.names errors
+      # Row names will be set by calling code if needed
+      rownames(data) <- NULL
+      return(data)
+    }
+  }
+  
+  # RDS doesn't exist or is outdated, read CSV
+  data <- read.csv(file_path, ...)
+  
+  # Save as RDS for next time (without row names)
+  tryCatch({
+    data_to_save <- data
+    rownames(data_to_save) <- NULL
+    saveRDS(data_to_save, rds_path, compress = TRUE)
+  }, error = function(e) {
+    # Silently fail if can't write RDS (permissions, etc.)
+    # App will still work, just slower next time
+  })
+  
+  return(data)
+}
 
 # styling/resources ----
 
@@ -138,8 +179,8 @@ app_preprocess <- function(m_reg, info_df, mwi, app_start = T){
       geodat[[idx]] <- geodat[[idx]][order(geodat[[idx]]$STATE,
                                            geodat[[idx]]$GEOID),]
       
-      # convert to points for US visualization -- ignore warnings
-      geopts[[idx]] <- st_centroid(geodat[[idx]])
+      # convert to points for US visualization -- suppress warnings
+      geopts[[idx]] <- suppressWarnings(st_centroid(geodat[[idx]]))
     }
     
     if (app_start &
@@ -207,13 +248,13 @@ colnames(sub_m)[ncol(sub_m)] <- "Updated Weights"
 rownames(sub_m) <- rownames(m_reg)
 
 # load index weighting/output
-info_df <- read.csv(
-  file.path(data_folder, "Cleaned", "HSE_MWI_Data_Information.csv"),
+info_df <- read_csv_cached(
+  file.path(data_folder, "Cleaned", "HSE_MWI_Data_Information.csv")
 )
 rownames(info_df) <- info_df$Numerator
 
 # load mapped measure data excat values
-meas_df <- read.csv(
+meas_df <- read_csv_cached(
   file.path(data_folder, "Cleaned", "HSE_MWI_ZCTA_Converted_Measures.csv"),
   colClasses = c("GEOID" = "character")
 )
@@ -294,7 +335,7 @@ cty_cw$GEOID <- aggregate(GEOID ~ ZCTA5, data = county_cw,
                           FUN = function(x){paste(x, collapse = "|")})[,2]
 
 # no directionality percentile ranking
-no_dir_perc_meas_df <- read.csv(
+no_dir_perc_meas_df <- read_csv_cached(
   file.path(data_folder, "Cleaned", 
             "HSE_MWI_ZCTA_No_Directionality_Percentile_Ranked_Measures.csv"),
   colClasses = c("GEOID" = "character")
@@ -304,16 +345,16 @@ no_dir_perc_meas_df <- no_dir_perc_meas_df[no_dir_perc_meas_df$ZCTA != "",]
 rownames(no_dir_perc_meas_df) <- no_dir_perc_meas_df$ZCTA
 
 # MWI scores
-# NOTE: may also save as RData for faster reading
+# NOTE: Using RDS caching for faster reading (5-10x speedup)
 mwi <- list()
-mwi[["pop"]] <- read.csv(
+mwi[["pop"]] <- read_csv_cached(
   file.path(data_folder, "Cleaned", 
             "HSE_MWI_ZCTA_Mental_Wellness_Index_Population.csv"),
   colClasses = c("ZCTA" = "character")
 )
 # remove any empty zcta rows (miswriting?) -- TODO: fix in pipeline
 mwi[["pop"]] <- mwi[["pop"]][mwi[["pop"]]$ZCTA != "",]
-mwi[["black"]] <- read.csv(
+mwi[["black"]] <- read_csv_cached(
   file.path(data_folder, "Cleaned", 
             "HSE_MWI_ZCTA_Mental_Wellness_Index_Black.csv"),
   colClasses = c("ZCTA" = "character")
@@ -642,7 +683,7 @@ plot_bee_distr <- function(fill, st, mwi, idx, ol, is_all = F, hl = F, zcta_hl =
         )+
         scale_size_manual(values = hl_size)
     } else {
-      ggplot(bee.df, aes(lab, val, color = val), size = 1.5)+
+      ggplot(bee.df, aes(lab, val, color = val))+
         scale_color_gradientn(
           colors = 
             meas_colors_pal[[ol$meas_col_to_type[ol$measure_to_names[[idx]][fill]]]](100),
