@@ -24,6 +24,13 @@ library(shinyBS)
 library(DT)
 # library(formattable)
 library(dplyr)
+library(shiny.i18n)
+
+# --- INTERNATIONALIZATION SETUP ---
+# Load translation file
+i18n <- Translator$new(translation_json_path = "translation.json")
+i18n$set_translation_language("en") # Default to English
+# ----------------------------------
 
 options(shiny.maxRequestSize=300*1024^2)
 
@@ -727,6 +734,16 @@ ui <- fluidPage(
     style="display:none"
   ),
   
+  # --- INTERNATIONALIZATION UI ---
+  # Add a language selector at the top right or start of page
+  div(style = "float: right; padding: 10px;",
+      selectInput('selected_language',
+                  i18n$t("Change Language"),
+                  choices = i18n$get_languages(),
+                  selected = i18n$get_key_translation())
+  ),
+  # -------------------------------
+
   navbarPage(
     collapsible = T,
     title=
@@ -737,19 +754,19 @@ ui <- fluidPage(
             img(src="media/MITRE_logo.png", height="30"),
             target="blank",
           ),
-          HTML(paste0("Mental Wellness Index™ Tool"))
+          HTML(paste0(i18n$t("Mental Wellness Index™ Tool"))) # Wrapped in translate
         )
       } else {
         div(
-          HTML(paste0("Mental Wellness Index™ Tool")),
+          HTML(paste0(i18n$t("Mental Wellness Index™ Tool"))), 
           "style" = "padding-top:5px"
-        )
+          )
       },
     theme="stylesheets/app.css",
     
     # explore states ----
     tabPanel(
-      title = div("Explore States", class="explore"),
+      title = div(i18n$t("Explore States"), class="explore"),
       class = "explore-panel",
       
       sidebarLayout(
@@ -1262,6 +1279,14 @@ ui <- fluidPage(
 # SERVER ----
 
 server <- function(input, output, session) {
+  
+  # --- INTERNATIONALIZATION LOGIC ---
+  # Update the language when the user selects a new one
+  observeEvent(input$selected_language, {
+    update_lang(session, input$selected_language)
+  })
+  # ----------------------------------
+
   # preallocate custom data ----
   
   # overall list of mwi data
