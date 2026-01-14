@@ -205,3 +205,36 @@ load_cached_data <- function(cache_path = "cache", name = "data_cache") {
     }
   )
 }
+
+#' Initialize Data Layer
+#'
+#' Orchestrates the loading of the initial dataset based on config
+#'
+#' @param data_path Path to the data directory
+#' @return A list or environment containing the loaded datasets
+#' @export
+initialize_data_layer <- function(data_path) {
+  # 1. Load dependencies
+  load_data_layer() 
+  
+  # 2. Check cache first (optimization)
+  cached <- load_cached_data(name = "main_dataset")
+  if (!is.null(cached)) {
+    return(list(main = cached))
+  }
+  
+  # 3. If no cache, load raw data
+  # Note: You need to ensure the directory exists or handle the error gracefully
+  tryCatch({
+    raw_data <- load_raw_data(data_path)
+    
+    # 4. Return data structure expected by the app
+    # If raw_data is NULL (no files), return empty list to prevent crash
+    if (is.null(raw_data)) return(list())
+    
+    return(raw_data)
+  }, error = function(e) {
+    warning("Data initialization failed: ", e$message)
+    return(list())
+  })
+}
