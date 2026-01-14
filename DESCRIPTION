@@ -1,0 +1,27 @@
+Package: MentalWellnessIndex
+Title: Mental Wellness Index (MWI) Tool
+Version: 1.0.0
+Description: A Shiny application for visualizing the Mental Wellness Index (MWI) across US ZCTAs.
+Authors@R: person("HSE", "Team", email = "email@example.com", role = c("aut", "cre"))
+Depends: 
+    R (>= 4.0.0)
+Imports: 
+    readxl,
+    writexl,
+    htmltools,
+    shiny,
+    tigris,
+    leaflet,
+    RColorBrewer,
+    sf,
+    plotly,
+    ggbeeswarm,
+    shinyWidgets,
+    sass,
+    shinycssloaders,
+    shinyBS,
+    DT,
+    dplyr
+License: MIT
+Encoding: UTF-8
+LazyData: true
