@@ -689,3 +689,74 @@ add_custom_css <- function() {
     }
   "))
 }
+
+#' Create Complete UI
+#'
+#' Assembles all UI components into the final application UI
+#'
+#' @param config Application configuration list
+#' @return A Shiny UI definition
+#' @export
+create_ui <- function(config) {
+  # 1. Define theme
+  theme <- create_app_theme()
+  
+  # 2. Assemble the Dashboard
+  # We use the components you already defined in ui_layer.R
+  
+  # Define Sidebar
+  sidebar <- create_sidebar_nav()
+  
+  # Define Main Body (Example structure)
+  body <- tagList(
+    add_custom_css(),
+    shinyjs::useShinyjs(), # Required for shinyjs to work
+    
+    # Header
+    div(class = "container-fluid",
+        create_header(title = config$app_name, subtitle = config$app_description)
+    ),
+    
+    # Dashboard Content
+    tabsetPanel(
+      id = "main_tabs",
+      type = "hidden", # Hidden tabs controlled by sidebar
+      
+      # Dashboard Tab
+      tabPanelBody("panel_Dashboard",
+        create_dashboard_summary(),
+        hr(),
+        create_card("System Overview", p("Welcome to the HSE MWI SME Group Dashboard."))
+      ),
+      
+      # Data Management Tab
+      tabPanelBody("panel_Data Management",
+        create_upload_form(),
+        hr(),
+        create_data_table("raw_data_table")
+      ),
+      
+      # Analysis Tab
+      tabPanelBody("panel_Analysis",
+        create_filter_form(),
+        hr(),
+        create_plot_container("main_plot", "Analysis Results")
+      )
+    ),
+    
+    # Footer
+    create_footer()
+  )
+  
+  # 3. Return the Layout
+  # Using fluidPage as the base container
+  return(
+    fluidPage(
+      theme = theme,
+      sidebarLayout(
+        sidebarPanel = sidebar,
+        mainPanel = body
+      )
+    )
+  )
+}
