@@ -1,0 +1,29 @@
+{
+  "languages": ["en", "ms"],
+  "translation": [
+    {
+      "en": "Mental Wellness Index™ Tool",
+      "ms": "Alat Indeks Kesejahteraan Mental™"
+    },
+    {
+      "en": "Explore States",
+      "ms": "Terokai Negeri"
+    },
+    {
+      "en": "Explore ZIP Codes",
+      "ms": "Terokai Poskod"
+    },
+    {
+      "en": "Create Your Own MWI",
+      "ms": "Cipta MWI Anda Sendiri"
+    },
+    {
+      "en": "MWI Toolkit",
+      "ms": "Kit Alat MWI"
+    },
+    {
+      "en": "Change Language",
+      "ms": "Tukar Bahasa"
+    }
+  ]
+}
