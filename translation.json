@@ -1,5 +1,8 @@
 {
-  "languages": ["en", "ms"],
+  "languages": [
+    "en",
+    "ms"
+  ],
   "translation": [
     {
       "en": "Mental Wellness Index™ Tool",
@@ -24,6 +27,198 @@
     {
       "en": "Change Language",
       "ms": "Tukar Bahasa"
+    },
+    {
+      "en": "Exploration Options",
+      "ms": "Pilihan Penerokaan"
+    },
+    {
+      "en": "Welcome to the Mental Wellness Index (MWI) Tool!",
+      "ms": "Selamat datang ke Alat Indeks Kesejahteraan Mental (MWI)!"
+    },
+    {
+      "en": "Select any of the options below to get started.",
+      "ms": "Pilih mana-mana pilihan di bawah untuk bermula."
+    },
+    {
+      "en": "If you would like to focus on a specific ZIP Code*, click on it in the map to the right or select it from the list below.",
+      "ms": "Jika anda ingin fokus pada Poskod tertentu*, klik padanya dalam peta di sebelah kanan atau pilih dari senarai di bawah."
+    },
+    {
+      "en": "Which population's MWI do you want to view?",
+      "ms": "MWI populasi mana yang anda mahu lihat?"
+    },
+    {
+      "en": "Overall",
+      "ms": "Keseluruhan"
+    },
+    {
+      "en": "Black",
+      "ms": "Kulit Hitam"
+    },
+    {
+      "en": "Which state would you like to focus on?",
+      "ms": "Negeri mana yang anda mahu fokuskan?"
+    },
+    {
+      "en": "All",
+      "ms": "Semua"
+    },
+    {
+      "en": "What would you like to explore?",
+      "ms": "Apa yang anda mahu terokai?"
+    },
+    {
+      "en": "Which ZIP Code would you like to focus on in the selected state?",
+      "ms": "Poskod mana yang anda mahu fokuskan di negeri yang dipilih?"
+    },
+    {
+      "en": "Reset ZIP Code Focus",
+      "ms": "Set Semula Fokus Poskod"
+    },
+    {
+      "en": "Custom MWI Upload",
+      "ms": "Muat Naik MWI Tersuai"
+    },
+    {
+      "en": "About the Mental Wellness Index",
+      "ms": "Mengenai Indeks Kesejahteraan Mental"
+    },
+    {
+      "en": "To create the necessary custom Mental Wellness Index file, please see the \"Create Your Own MWI\" tab. Note that data uploaded to this application is not kept -- it is deleted once you leave the page. However, if you would like to keep your data on your computer while viewing the MWI, please see the \"Add Local Data to MWI on Your Computer\" section.",
+      "ms": "Untuk mencipta fail Indeks Kesejahteraan Mental tersuai yang diperlukan, sila lihat tab \"Cipta MWI Anda Sendiri\". Perhatikan bahawa data yang dimuat naik ke aplikasi ini tidak disimpan -- ia akan dipadam sebaik sahaja anda meninggalkan halaman. Walau bagaimanapun, jika anda ingin menyimpan data anda di komputer anda semasa melihat MWI, sila lihat bahagian \"Tambah Data Tempatan ke MWI di Komputer Anda\"."
+    },
+    {
+      "en": "NOTE: file upload is currently experiencing issues on the website. In the meantime, you can explore your custom MWI on your local computer by following steps 1 - 7 on the \"Add Local Data to Mental Wellness Index (MWI) On Your Computer\" page under \"Create Your Own MWI\".",
+      "ms": "NOTA: muat naik fail sedang mengalami masalah di laman web. Sementara itu, anda boleh meneroka MWI tersuai anda di komputer tempatan anda dengan mengikuti langkah 1 - 7 di halaman \"Tambah Data Tempatan ke Indeks Kesejahteraan Mental (MWI) Di Komputer Anda\" di bawah \"Cipta MWI Anda Sendiri\"."
+    },
+    {
+      "en": "Upload Custom Mental Wellness Index (.RData)",
+      "ms": "Muat Naik Indeks Kesejahteraan Mental Tersuai (.RData)"
+    },
+    {
+      "en": "Run Custom MWI",
+      "ms": "Jalankan MWI Tersuai"
+    },
+    {
+      "en": "Reset",
+      "ms": "Set Semula"
+    },
+    {
+      "en": "The Mental Wellness Index is the weighted sum of 28 measure values, which quantify facilitators and barriers to mental wellness. For more information about the Mental Wellness Index, please see the 'MWI Toolkit' page.",
+      "ms": "Indeks Kesejahteraan Mental adalah jumlah berwajaran daripada 28 nilai ukuran, yang mengukur fasilitator dan halangan kepada kesejahteraan mental. Untuk maklumat lanjut mengenai Indeks Kesejahteraan Mental, sila lihat halaman 'Kit Alat MWI'."
+    },
+    {
+      "en": "All states are included. Selecting \"All\" will show all included states. Note that this is slower to render and will show ZCTAs as points.",
+      "ms": "Semua negeri disertakan. Memilih \"Semua\" akan menunjukkan semua negeri yang disertakan. Perhatikan bahawa ini lebih perlahan untuk dipaparkan dan akan menunjukkan ZCTA sebagai titik."
+    },
+    {
+      "en": "* ZCTAs are used in the Mental Wellness Index and are represented in maps and plots. ZIP codes are analgous to ZCTAs. When ZIP Codes are entered above, they are mapped to ZCTAs. For more information on ZCTAs, please see",
+      "ms": "* ZCTA digunakan dalam Indeks Kesejahteraan Mental dan diwakili dalam peta dan plot. Poskod adalah analog kepada ZCTA. Apabila Poskod dimasukkan di atas, ia dipetakan kepada ZCTA. Untuk maklumat lanjut mengenai ZCTA, sila lihat"
+    },
+    {
+      "en": "census.gov",
+      "ms": "census.gov"
+    },
+    {
+      "en": "Measure Interpretation",
+      "ms": "Tafsiran Ukuran"
+    },
+    {
+      "en": "About Selected Measure",
+      "ms": "Mengenai Ukuran Yang Dipilih"
+    },
+    {
+      "en": "For more information on data and overall methodology, please see the \"MWI Toolkit\" page.",
+      "ms": "Untuk maklumat lanjut mengenai data dan metodologi keseluruhan, sila lihat halaman \"Kit Alat MWI\"."
+    },
+    {
+      "en": "To explore your community's outcomes, enter a specific ZIP Code* to get started.",
+      "ms": "Untuk meneroka hasil komuniti anda, masukkan Poskod tertentu* untuk bermula."
+    },
+    {
+      "en": "Which ZIP Code would you like to focus on?",
+      "ms": "Poskod mana yang anda mahu fokuskan?"
+    },
+    {
+      "en": "Social Determinants of Health",
+      "ms": "Penentu Sosial Kesihatan"
+    },
+    {
+      "en": "Healthcare Access",
+      "ms": "Akses Penjagaan Kesihatan"
+    },
+    {
+      "en": "Health Status",
+      "ms": "Status Kesihatan"
+    },
+    {
+      "en": "Mental Wellness Index",
+      "ms": "Indeks Kesejahteraan Mental"
+    },
+    {
+      "en": "Selected Measure Interpretation",
+      "ms": "Tafsiran Ukuran Terpilih"
+    },
+    {
+      "en": "ZCTA Measure Results",
+      "ms": "Keputusan Ukuran ZCTA"
+    },
+    {
+      "en": "A variety of data sources are used for measures comprising the Mental Wellness Index. The data currently pictured for Mental Wellness Index came from various sources of data.",
+      "ms": "Pelbagai sumber data digunakan untuk ukuran yang terdiri daripada Indeks Kesejahteraan Mental. Data yang ditunjukkan untuk Indeks Kesejahteraan Mental datang daripada pelbagai sumber data."
+    },
+    {
+      "en": "Distribution of Mental Wellness Index for the Overall Population in",
+      "ms": "Taburan Indeks Kesejahteraan Mental untuk Populasi Keseluruhan di"
+    },
+    {
+      "en": "has a Mental Wellness Index national value of",
+      "ms": "mempunyai nilai nasional Indeks Kesejahteraan Mental sebanyak"
+    },
+    {
+      "en": "and is at the",
+      "ms": "dan berada di"
+    },
+    {
+      "en": "percentile for the state. This is in the",
+      "ms": "persentil untuk negeri. Ini berada di"
+    },
+    {
+      "en": "relative to the selected community, and in the",
+      "ms": "berbanding dengan komuniti terpilih, dan di"
+    },
+    {
+      "en": "relative to the United States.",
+      "ms": "berbanding dengan Amerika Syarikat."
+    },
+    {
+      "en": "bottom third",
+      "ms": "bahagian bawah ketiga"
+    },
+    {
+      "en": "middle third",
+      "ms": "bahagian tengah ketiga"
+    },
+    {
+      "en": "top third",
+      "ms": "bahagian atas ketiga"
+    },
+    {
+      "en": "A higher MWI value indicates more assets supporting mental wellness. A lower MWI value indicates more obstacles to mental wellness. Range from 0 to 100.",
+      "ms": "Nilai MWI yang lebih tinggi menunjukkan lebih banyak aset yang menyokong kesejahteraan mental. Nilai MWI yang lebih rendah menunjukkan lebih banyak halangan kepada kesejahteraan mental. Julat dari 0 hingga 100."
+    },
+    {
+      "en": "Measure Rankings:",
+      "ms": "Kedudukan Ukuran:"
+    },
+    {
+      "en": "Range from 0 to 100. Measures with a higher rank (closer to 100) indicate more community-level assets or obstacles",
+      "ms": "Julat dari 0 hingga 100. Ukuran dengan kedudukan lebih tinggi (lebih dekat dengan 100) menunjukkan lebih banyak aset atau halangan di peringkat komuniti"
+    },
+    {
+      "en": "to mental wellness, based on their respective directionality.",
+      "ms": "kepada kesejahteraan mental, berdasarkan arah masing-masing."
     }
   ]
 }
