@@ -427,8 +427,8 @@ names(meas_colors) <- c(unique(m_reg$Category), "Mental Wellness Index")
 meas_max_colors <- c(
   "#5d499e", # SDOH
   "#157ba7", # healthcare status
-  "#70ad47", # health access
-  "#00441b" # "#70ad47" # MWI
+  "#467128", # health access (changed for better contrast)
+  "#00441b" #"#70ad47" # MWI
 )
 
 #   sapply(1:length(meas_colors), function(x){
@@ -897,7 +897,7 @@ server <- function(input, output, session) {
              ),
              HTML("</p></font>"),
              HTML("<center>"),
-             img(src = file.path("media", "MWI Framework (Transparent Background).png"), align = "center", width = "60%"),
+             img(src = file.path("media", "MWI Framework (Transparent Background).png"), align = "center", width = "60%", alt = "Mental Wellness Index Framework Diagram"),
              HTML("</center>"),
              HTML("<br>"),
              HTML("<center>"),
